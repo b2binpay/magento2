@@ -1,0 +1,73 @@
+<?php
+/**
+ * @see \B2Binpay\Payment\Block\System\Config\Checker
+ * @var \B2Binpay\Payment\Block\System\Config\Checker $block
+ */
+?>
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function (jQuery) {
+
+        var resultSpan = jQuery('#b2binpay_check_block');
+
+        jQuery('#b2binpay_check_button').click(function () {
+            var params = {
+                "auth_key": jQuery("input[name='groups[b2binpay][fields][auth_key][value]']").val(),
+                "auth_secret": jQuery("input[name='groups[b2binpay][fields][auth_secret][value]']").val(),
+                "is_test": jQuery("select[name='groups[b2binpay][fields][debug][value]").val(),
+                "wallets": []
+            };
+
+            var wallets = [];
+
+            jQuery("input.b2binpay-wallet[name^='groups[b2binpay][fields][wallets][value]']").each(function (i, wallet) {
+                wallets.push(jQuery(wallet).val());
+            });
+
+            params.wallets = wallets.join('_');
+
+            new Ajax.Request('<?php echo $block->getAjaxUrl() ?>', {
+                parameters: params,
+                loaderArea: false,
+                asynchronous: true,
+                onCreate: function () {
+                    resultSpan.find('.checked').hide();
+                    resultSpan.find('.processing').show();
+                    resultSpan.find('.result').text('');
+                },
+                onSuccess: function (response) {
+                    resultSpan.find('.processing').hide();
+
+                    var resultText = '';
+
+                    if (response.status > 200) {
+                        resultText = response.statusText;
+                    } else {
+                        var json = response.responseJSON;
+
+                        if ((typeof json.success !== 'undefined') && (true === json.success)) {
+                            resultSpan.find('.checked').show();
+                        }
+
+                        if (typeof json.message !== 'undefined') {
+                            resultText = json.message;
+                        }
+                    }
+
+                    resultSpan.find('.result').text(resultText);
+                }
+            });
+        });
+
+    });
+</script>
+<?php echo $block->getButtonHtml() ?>
+<span class="check-indicator" id="b2binpay_check_block">
+    <img class="processing" hidden="hidden" alt="Checking" style="margin:0 5px"
+         src="<?php echo $block->getViewFileUrl('images/process_spinner.gif') ?>"/>
+    <img class="checked" hidden="hidden" alt="Checked" style="margin:-3px 5px"
+         src="<?php echo $block->getViewFileUrl('images/rule_component_apply.gif') ?>"/>
+    <span class="result"></span>
+</span>
