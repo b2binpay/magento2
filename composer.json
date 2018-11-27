@@ -1,6 +1,8 @@
 {
   "name": "b2binpay/magento2",
   "description": "B2BinPay Payment Method for Magento 2",
+  "type": "magento2-module",
+  "license": "MIT",
   "require": {
     "php": "^7",
     "ext-json": "*",
@@ -14,7 +16,6 @@
   "require-dev": {
     "phpunit/phpunit": "^6"
   },
-  "type": "magento2-module",
   "autoload": {
     "files": [
       "registration.php"
