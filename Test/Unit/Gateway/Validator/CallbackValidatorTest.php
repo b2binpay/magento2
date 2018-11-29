@@ -221,7 +221,8 @@ class CallbackValidatorTest extends TestCase
                     'isValid' => true,
                     'failsDescription' => [
                         'order' => $this->orderModel
-                    ]
+                    ],
+                    'errorCodes' => []
                 ]
             )
             ->willReturn($this->resultMock);
@@ -280,7 +281,8 @@ class CallbackValidatorTest extends TestCase
             'failsDescription' => [
                 'status' => $status,
                 'message' => $message
-            ]
+            ],
+            'errorCodes' => []
         ];
     }
 

@@ -4,12 +4,16 @@ namespace B2Binpay\Payment\Controller\Callback;
 
 use Magento\Sales\Model\Order;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\CsrfAwareActionInterface;
+use Magento\Framework\App\Request\InvalidRequestException;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\RawFactory;
 use B2Binpay\Payment\Gateway\Validator\CallbackValidator;
 use B2Binpay\AmountFactory;
 use Psr\Log\LoggerInterface;
 
-class Index extends \Magento\Framework\App\Action\Action
+class Index extends Action implements CsrfAwareActionInterface
 {
     /**
      * @var RawFactory
@@ -58,6 +62,23 @@ class Index extends \Magento\Framework\App\Action\Action
         $this->amountFactory = $amountFactory;
         $this->logger = $logger;
         parent::__construct($context);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function createCsrfValidationException(
+        RequestInterface $request
+    ): ?InvalidRequestException {
+        return null;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function validateForCsrf(RequestInterface $request): ?bool
+    {
+        return true;
     }
 
     /**
