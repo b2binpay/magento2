@@ -2,6 +2,8 @@
 
 Accept Bitcoin, Bitcoin Cash, Litecoin, Ethereum, and other CryptoCurrencies via B2BinPay on your Magento store.
 
+[![Build Status](https://scrutinizer-ci.com/g/b2binpay/magento2/badges/build.png?b=master)](https://scrutinizer-ci.com/g/b2binpay/magento2/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/b2binpay/magento2/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/b2binpay/magento2/?branch=master)
+
 ## Description
 
 [B2BinPay](https://www.b2binpay.com/) is an all-in-one global solution for CryptoCurrency Payments.
