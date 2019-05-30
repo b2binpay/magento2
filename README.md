@@ -6,7 +6,7 @@ Accept Bitcoin, Bitcoin Cash, Litecoin, Ethereum, and other CryptoCurrencies via
 
 ## Description
 
-[B2BinPay](https://www.b2binpay.com/) is an all-in-one global solution for CryptoCurrency Payments.
+[B2BinPay](https://b2binpay.com/) is an all-in-one global solution for CryptoCurrency Payments.
 
 We strive to make Digital Payments Simple, Secure and Quick, improving financial access through innovative technology developed in-house.
 
@@ -24,7 +24,7 @@ Bitcoin, Bitcoin Cash, Ethereum, DASH, Litecoin, Monero, NEO, NEM, Ripple, B2BX 
 
 ## Installation
 
-If you don’t already have one, create a [B2BinPay](https://www.b2binpay.com/) account.
+If you don’t already have one, create a [B2BinPay](https://b2binpay.com/) account.
 
 1. Update the `composer.json` file in the root directory of your Magento store and wait for Composer to finish updating the dependencies.
 ```
